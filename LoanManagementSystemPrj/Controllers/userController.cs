@@ -18,18 +18,17 @@ namespace LoanManagementSystemPrj.Controllers
 
 
         static readonly log4net.ILog _log4net = log4net.LogManager.GetLogger(typeof(userController));
-          readonly LoanManagementContext _context;
-    public userController(LoanManagementContext context)
-    {
-    _context = context;
-    } 
+       
+        iuser udb;
+        public userController ( iuser _udb)
+        {
+        
+            udb = _udb;
+        } 
 
     
-        iuser udb;
-        public userController(iuser _udb)
-        {
-            udb = _udb;
-        }
+        
+        
        
         [HttpGet]
         [Route("GetDetail")]

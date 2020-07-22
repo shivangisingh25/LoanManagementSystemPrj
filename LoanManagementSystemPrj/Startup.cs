@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using LoanManagementSystemPrj.Models;
@@ -18,6 +16,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
+using System.Reflection;
+using System.Runtime.Intrinsics;
+using Microsoft.OpenApi.Models;
+
 
 namespace LoanManagementSystemPrj
 {
@@ -67,6 +69,11 @@ namespace LoanManagementSystemPrj
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "Loan Management System"); }); ;
+
             loggerFactory.AddLog4Net();
 
             app.UseAuthentication();
@@ -77,9 +84,7 @@ namespace LoanManagementSystemPrj
 
             app.UseAuthorization();
 
-            app.UseSwagger();
-
-            app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "Loan Management System"); }); ;
+           
 
             app.UseEndpoints(endpoints =>
             {

@@ -17,16 +17,14 @@ namespace LoanManagementSystemPrj.Controllers
     {
 
         static readonly log4net.ILog _log4net = log4net.LogManager.GetLogger(typeof(adminController));
-        readonly LoanManagementContext _context;
-        public adminController(LoanManagementContext context)
-        {
-            _context = context;
-        }
+    
         iadmin adb;
-        public adminController(iadmin _adb)
+        public adminController( iadmin _adb)
         {
             adb = _adb;
         }
+        
+         
         [HttpGet]
         [Route("GetDetails")]
         public IActionResult GetDetails()
