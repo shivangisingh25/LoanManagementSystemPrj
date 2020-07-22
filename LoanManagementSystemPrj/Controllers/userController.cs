@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using LoanManagementSystemPrj.Models;
 using LoanManagementSystemPrj.Repository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -13,7 +14,17 @@ namespace LoanManagementSystemPrj.Controllers
     [Route("api/[controller]")]
     [ApiController]
     public class userController : ControllerBase
+    { 
+
+
+        static readonly log4net.ILog _log4net = log4net.LogManager.GetLogger(typeof(userController));
+          readonly LoanManagementContext _context;
+    public userController(LoanManagementContext context)
     {
+    _context = context;
+    } 
+
+    
         iuser udb;
         public userController(iuser _udb)
         {
@@ -24,6 +35,7 @@ namespace LoanManagementSystemPrj.Controllers
         [Route("GetDetail")]
         public IActionResult GetDetail(int? Id)
         {
+          _log4net.Info("userController Http GET");
             if (Id == null)
             {
                 return BadRequest();
@@ -48,6 +60,7 @@ namespace LoanManagementSystemPrj.Controllers
         [Route("UpdateDetail")]
         public IActionResult UpdateDetail(int id, string PhnNo= "", string Address = "")
         {
+            _log4net.Info("userController Http PUT");
             if (ModelState.IsValid)
             {
                 try

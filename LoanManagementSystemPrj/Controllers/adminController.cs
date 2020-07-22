@@ -15,6 +15,13 @@ namespace LoanManagementSystemPrj.Controllers
     [ApiController]
     public class adminController : ControllerBase
     {
+
+        static readonly log4net.ILog _log4net = log4net.LogManager.GetLogger(typeof(adminController));
+        readonly LoanManagementContext _context;
+        public adminController(LoanManagementContext context)
+        {
+            _context = context;
+        }
         iadmin adb;
         public adminController(iadmin _adb)
         {
@@ -24,6 +31,7 @@ namespace LoanManagementSystemPrj.Controllers
         [Route("GetDetails")]
         public IActionResult GetDetails()
         {
+            _log4net.Info("adminController Http GET ALL");
             try
             {
                 var loans =  adb.GetDetails();
