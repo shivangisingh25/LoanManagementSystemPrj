@@ -11,7 +11,7 @@ namespace LoanManagementSystemPrj.Repository
         List<Loan> GetDetails();
         Loan GetDetail(int? Id);
         int AddDetail(Loan data);
-        int DeleteDetail(int? Id);
+        int DeleteDetail(int Id);
         int UpdateDetail(int id, string AccType, decimal LoanPremium);
 
 

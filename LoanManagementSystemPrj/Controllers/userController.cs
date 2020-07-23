@@ -29,7 +29,6 @@ namespace LoanManagementSystemPrj.Controllers
     
         
         
-       
         [HttpGet]
         [Route("GetDetail")]
         public IActionResult GetDetail(int? Id)
@@ -64,9 +63,9 @@ namespace LoanManagementSystemPrj.Controllers
             {
                 try
                 {
-                     udb.UpdateDetail(id, PhnNo, Address);
+                    var result = udb.UpdateDetail(id, PhnNo, Address);
 
-                    return Ok();
+                    return Ok(result);
                 }
                 catch (Exception ex)
                 {

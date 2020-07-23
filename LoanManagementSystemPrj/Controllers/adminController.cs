@@ -71,7 +71,7 @@ namespace LoanManagementSystemPrj.Controllers
 
         [HttpPost]
         [Route("AddDetail")]
-        public IActionResult AddDetail([FromBody]Loan model)
+        public IActionResult AddDetail(Loan model)
         {
             if (ModelState.IsValid)
             {
@@ -100,28 +100,28 @@ namespace LoanManagementSystemPrj.Controllers
 
         [HttpDelete]
         [Route("DeleteDetail")]
-        public IActionResult DeleteDetail(int? Id)
+        public IActionResult DeleteDetail(int Id)
         {
-            int result = 0;
+            
 
             if (Id == null)
             {
-                return BadRequest();
+                return BadRequest(Id);
             }
 
             try
             {
-                result =  adb.DeleteDetail(Id);
+                var result =  adb.DeleteDetail(Id);
                 if (result == 0)
                 {
-                    return NotFound();
+                    return NotFound(result);
                 }
-                return Ok();
+                return Ok(result);
             }
             catch (Exception)
             {
 
-                return BadRequest();
+                return BadRequest(Id);
             }
         }
 
@@ -133,9 +133,9 @@ namespace LoanManagementSystemPrj.Controllers
             {
                 try
                 {
-                     adb.UpdateDetail(id,AccType, LoanPremium);
+                    var result = adb.UpdateDetail(id,AccType, LoanPremium);
 
-                    return Ok();
+                    return Ok(result);
                 }
                 catch (Exception ex)
                 {

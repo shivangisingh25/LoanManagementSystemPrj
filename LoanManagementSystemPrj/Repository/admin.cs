@@ -27,7 +27,7 @@ namespace LoanManagementSystemPrj.Repository
             return 0;
         }
 
-        public int DeleteDetail(int? Id)
+        public int DeleteDetail(int Id)
         {
             int result = 0;
 
@@ -40,9 +40,8 @@ namespace LoanManagementSystemPrj.Repository
                 {
                     
                     db.Loan.Remove(post);
-
-                   
                     result =  db.SaveChanges();
+                    return 1;
                 }
                 return result;
             }
