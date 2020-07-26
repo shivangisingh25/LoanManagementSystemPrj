@@ -57,8 +57,40 @@ namespace LoanManagementTesting
             Assert.AreEqual(200, okResult.StatusCode);
         }
 
+        [Test]
+        public void Delete_Valid_Detail()
+        {
+            admin loandata = new admin(db);
+            adminController obj = new adminController(loandata);
+            var data = obj.DeleteDetail(2);
+            var okResult = data as OkObjectResult;
+            Assert.AreEqual(200, okResult.StatusCode);
+        }
 
-       
+        [Test]
+        public void Add_Valid_Detail()
+        {
+            admin loandata = new admin(db);
+            adminController obj = new adminController(loandata);
+            Loan Loanvalue = new Loan { Id = 5, AccNo = 123456789, Name = "Dummy1", Age = 30, Gender = "Male", Address = "Dummy Address 1", PhnNo = "1122334455", AccType = "Savings", AccBal = (decimal)52879.11, LoanAmt = (decimal)7895.11, LoanPremium = (decimal)785.33 };
+
+            var data = obj.AddDetail(Loanvalue);
+            var okResult = data as OkObjectResult;
+            Assert.AreEqual(200, okResult.StatusCode);
+        }
+
+        [Test]
+        public void Update_Valid_Detail()
+        {
+            admin loandata = new admin(db);
+            adminController obj = new adminController(loandata);
+            var data = obj.UpdateDetail(2, "Savings", (decimal)111.00);
+            var okResult = data as OkObjectResult;
+            Assert.AreEqual(200, okResult.StatusCode);
+        }
+
+
+
 
 
 
